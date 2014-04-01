@@ -1,5 +1,9 @@
-var document = require('dom-lite').document
-  , htmlparser = require('htmlparser2')
+var htmlparser = require('htmlparser2')
+  , dom = require('dom-lite')
+
+module.exports = dom
+
+var document = dom.document
 
 var el_proto = Object.getPrototypeOf(document.createElement('p'))
   , node_proto = Object.getPrototypeOf(el_proto)

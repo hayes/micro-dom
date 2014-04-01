@@ -1,0 +1,23 @@
+{
+  "name": "micro-dom",
+  "version": "0.0.0",
+  "description": "a tiny implementation of the dom in node built on top of dom-lite",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/hayes/micro-dom.git"
+  },
+  "author": "Michael Hayes",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hayes/micro-dom/issues"
+  },
+  "homepage": "https://github.com/hayes/micro-dom",
+  "dependencies": {
+    "dom-lite": "0.0.3",
+    "htmlparser2": "3.7.1"
+  }
+}

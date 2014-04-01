@@ -54,7 +54,7 @@ function add_children(root, nodes) {
       el = document.createElement(nodes[i].name)
       attrs = Object.keys(nodes[i].attribs)
 
-      for(var j = 0, l = attrs.length; j < l; ++j) {
+      for(var j = 0, l2 = attrs.length; j < l2; ++j) {
         el.setAttribute(attrs[j], nodes[i].attribs[attrs[j]])
       }
 

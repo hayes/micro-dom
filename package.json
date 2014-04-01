@@ -1,6 +1,6 @@
 {
   "name": "micro-dom",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "a tiny implementation of the dom in node built on top of dom-lite",
   "main": "index.js",
   "scripts": {
@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/hayes/micro-dom",
   "dependencies": {
-    "dom-lite": "0.0.3",
+    "dom-lite": "0.0.5",
     "htmlparser2": "3.7.1"
   }
 }

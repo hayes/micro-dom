@@ -9,20 +9,12 @@ var el_proto = Object.getPrototypeOf(document.createElement('p'))
   , node_proto = Object.getPrototypeOf(el_proto)
   , doc_proto = Object.getPrototypeOf(document)
 
-Object.defineProperty(el_proto, 'innerHTML', {
+Object.defineProperty(node_proto, 'innerHTML', {
     get: get_html
   , set: set_html
 })
 
-var _insert = node_proto.insertBefore
-
-node_proto.insertBefore = insertBefore
-
 doc_proto.createElementNS = createElementNS
-
-if(!doc_proto.createComment) {
-  doc_proto.createComment = doc_proto.createCommentNode
-}
 
 function get_html() {
   return node_proto.toString.call(this)
@@ -72,14 +64,4 @@ function add_children(root, nodes) {
 
 function createElementNS(ns, tag) {
   return this.createElement(tag)
-}
-
-function insertBefore(el, ref) {
-  if(el.nodeType !== 11) {
-    return _insert.call(this, el, ref)
-  }
-
-  for(var i = 0, l = el.childNodes.length; i < l; ++i) {
-    _insert.call(this, el.childNodes[i], ref)
-  }
 }

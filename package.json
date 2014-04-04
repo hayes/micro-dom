@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/hayes/micro-dom",
   "dependencies": {
-    "dom-lite": "git://github.com/hayes/dom-lite.git#93f0ff61451898f95d22e380781083cd9762bdae",
+    "dom-lite": "0.0.14",
     "htmlparser2": "3.7.1"
   }
 }

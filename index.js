@@ -14,10 +14,6 @@ Object.defineProperty(node_proto, 'innerHTML', {
   , set: set_html
 })
 
-Object.defineProperty(el_proto, 'attributes', {
-    get: get_attributes
-})
-
 doc_proto.createElementNS = createElementNS
 
 function get_html() {
@@ -65,19 +61,6 @@ function add_children(root, nodes) {
 
     root.appendChild(el)
   }
-}
-
-function get_attributes() {
-  var self = this
-
-  var keys = Object.keys(this).filter(el_proto.hasAttribute.bind(self))
-
-  return keys.map(function(key) {
-    return {
-        name: key
-      , value: self[key]
-    }
-  })
 }
 
 function createElementNS(ns, tag) {

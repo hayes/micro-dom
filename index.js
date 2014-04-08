@@ -14,7 +14,10 @@ Object.defineProperty(node_proto, 'innerHTML', {
   , set: set_html
 })
 
+var el_to_string = el_proto.toString
+
 doc_proto.createElementNS = createElementNS
+el_proto.toString = lower_case_els
 
 function get_html() {
   return node_proto.toString.call(this)
@@ -47,7 +50,7 @@ function add_children(root, nodes) {
     } else if(nodes[i].type === 'comment') {
       el = document.createComment(nodes[i].data)
     } else if(nodes[i].type === 'tag') {
-      el = document.createElement(nodes[i].name)
+      el = document.createElement(nodes[i].name.toLowerCase())
       attrs = Object.keys(nodes[i].attribs)
 
       for(var j = 0, l2 = attrs.length; j < l2; ++j) {
@@ -55,6 +58,8 @@ function add_children(root, nodes) {
       }
 
       add_children(el, nodes[i].children)
+    } else if(nodes[i].type === 'directive') {
+      el = new Directive(nodes[i].data)
     } else {
       continue
     }
@@ -65,4 +70,19 @@ function add_children(root, nodes) {
 
 function createElementNS(ns, tag) {
   return this.createElement(tag)
+}
+
+function lower_case_els() {
+  return el_to_string.call(this)
+    .replace(/^<\w*/, '<' + this.tagName.toLowerCase())
+    .replace(/<\/\w*>$/, '</' + this.tagName.toLowerCase() + '>')
+}
+
+function Directive(data) {
+  this.data = data
+}
+
+Directive.prototype = Object.create(node_proto)
+Directive.prototype.toString = function() {
+  return '<' + this.data + '>'
 }

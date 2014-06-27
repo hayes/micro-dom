@@ -5,6 +5,13 @@ module.exports = dom
 
 var document = dom.document
 
+document.ELEMENT_NODE = 1
+document.TEXT_NODE = 3
+document.COMMENT_NODE = 8
+document.DOCUMENT_NODE = 9
+document.DOCUMENT_TYPE_NODE = 10
+document.DOCUMENT_FRAGMENT_NODE = 11
+
 var el_proto = Object.getPrototypeOf(document.createElement('p'))
   , node_proto = Object.getPrototypeOf(el_proto)
   , doc_proto = Object.getPrototypeOf(document)
@@ -17,7 +24,6 @@ Object.defineProperty(node_proto, 'innerHTML', {
 var el_to_string = el_proto.toString
 
 doc_proto.createElementNS = createElementNS
-el_proto.toString = lower_case_els
 
 function get_html() {
   return node_proto.toString.call(this)
@@ -70,12 +76,6 @@ function add_children(root, nodes) {
 
 function createElementNS(ns, tag) {
   return this.createElement(tag)
-}
-
-function lower_case_els() {
-  return el_to_string.call(this)
-    .replace(/^<\w*/, '<' + this.tagName.toLowerCase())
-    .replace(/<\/\w*>$/, '</' + this.tagName.toLowerCase() + '>')
 }
 
 function Directive(data) {

@@ -1,6 +1,6 @@
 {
   "name": "micro-dom",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "a tiny implementation of the dom in node built on top of dom-lite",
   "main": "index.js",
   "scripts": {

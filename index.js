@@ -64,6 +64,15 @@ function add_children(root, nodes) {
       }
 
       add_children(el, nodes[i].children)
+    } else if(nodes[i].type === 'script') {
+      el = document.createElement('script')
+      attrs = Object.keys(nodes[i].attribs)
+
+      for(var j = 0, l2 = attrs.length; j < l2; ++j) {
+        el.setAttribute(attrs[j], nodes[i].attribs[attrs[j]])
+      }
+
+      add_children(el, nodes[i].children)
     } else if(nodes[i].type === 'directive') {
       el = new Directive(nodes[i].data)
     } else {

@@ -64,8 +64,8 @@ function add_children(root, nodes) {
       }
 
       add_children(el, nodes[i].children)
-    } else if(nodes[i].type === 'script') {
-      el = document.createElement('script')
+    } else if(nodes[i].type === 'script' || nodes[i].type === 'style') {
+      el = document.createElement(nodes[i].type)
       attrs = Object.keys(nodes[i].attribs)
 
       for(var j = 0, l2 = attrs.length; j < l2; ++j) {
